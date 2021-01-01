@@ -45,13 +45,13 @@ function setup() {
   var message = "This is a message";
  console.log(message);
   
-  trex = createSprite(50, 950, 20, 50); 
+  trex = createSprite(displayWidth-20/2-1830, displayHeight-20/2-120);      
   trex.addAnimation("running", trex_running);
   trex.addAnimation("collided", trex_collided);  
 
   trex.scale = 0.1;
 
-  sun = createSprite(width-50, 100, 10, 10);
+  sun = createSprite(displayWidth-20/2-250, displayHeight-20/2-920);
   sun.addAnimation("sun", sunAnimation);
   sun.scale = 0.1;
   
