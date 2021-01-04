@@ -42,25 +42,23 @@ function preload(){
 function setup() {
   createCanvas(displayWidth-20, displayHeight-20);
 
-  var message = "This is a message";
- console.log(message);
-  
-  trex = createSprite(displayWidth-20/2-1830, displayHeight-20/2-120);      
-  trex.addAnimation("running", trex_running);
-  trex.addAnimation("collided", trex_collided);  
-
-  trex.scale = 0.1;
-
-  sun = createSprite(displayWidth-20/2-250, displayHeight-20/2-920);
+  sun = createSprite(displayWidth-20/2-250, displayHeight/2);
   sun.addAnimation("sun", sunAnimation);
   sun.scale = 0.1;
   
   ground = createSprite(displayWidth-20, displayHeight-20/2-70);
-  ground.addImage("ground",groundImage);
+  ground.addImage("ground", groundImage);
   ground.x = ground.width/2;
+  ground.scale = 1.7;
   
-  invisibleGround = createSprite(30, 1020, displayWidth, 20);
-  invisibleGround.visible = false;
+  invisibleGround = createSprite(30, displayHeight-20/2);
+  invisibleGround.visible = true;
+
+  trex = createSprite(displayWidth-20/2-1830, displayHeight-20/2-120);    
+  trex.addAnimation("running", trex_running);
+  trex.addAnimation("collided", trex_collided);  
+
+  trex.scale = 0.1;
   
   //create Obstacle and Cloud Groups
   obstaclesGroup = createGroup();
@@ -102,7 +100,8 @@ function draw() {
     }
     
     //jump when the space key is pressed
-    if(keyDown("space") && trex.y >= 100) {
+    console.log(trex.y);
+    if(keyDown("space") && trex.y > displayHeight-20/2-150) {
         trex.velocityY = -12;
         jumpSound.play();
     }
@@ -212,7 +211,7 @@ function spawnClouds() {
   //write code here to spawn the clouds
   if (frameCount % 60 === 0) {
     var cloud = createSprite(displayWidth-20, displayHeight-20/2-80);
-    cloud.y = Math.round(random(80,120));
+    cloud.y = Math.round(random(displayHeight/2-10,displayHeight/2-100));
     cloud.addImage(cloudImage);
     cloud.scale = 0.5;
     cloud.velocityX = -3;
