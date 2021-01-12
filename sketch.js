@@ -52,7 +52,7 @@ function setup() {
   ground.scale = 1.7;
   
   invisibleGround = createSprite(30, displayHeight-20/2);
-  invisibleGround.visible = true;
+  invisibleGround.visible = false;
 
   trex = createSprite(displayWidth-20/2-1830, displayHeight-20/2-120);    
   trex.addAnimation("running", trex_running);
@@ -66,7 +66,7 @@ function setup() {
 
   
   trex.setCollider("rectangle",0,0,trex.width,trex.height);
-  trex.debug = true;
+  trex.debug = false;
   
   score = 0;
   
@@ -100,7 +100,6 @@ function draw() {
     }
     
     //jump when the space key is pressed
-    console.log(trex.y);
     if(keyDown("space") && trex.y > displayHeight-20/2-150) {
         trex.velocityY = -12;
         jumpSound.play();
