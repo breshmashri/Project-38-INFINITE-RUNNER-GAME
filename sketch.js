@@ -54,7 +54,7 @@ function setup() {
   invisibleGround = createSprite(30, displayHeight-20/2);
   invisibleGround.visible = false;
 
-  trex = createSprite(displayWidth-20/2-1830, displayHeight-20/2-120);    
+  trex = createSprite(50, displayHeight-20/2-120);    
   trex.addAnimation("running", trex_running);
   trex.addAnimation("collided", trex_collided);  
 
